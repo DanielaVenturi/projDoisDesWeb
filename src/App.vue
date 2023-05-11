@@ -23,25 +23,28 @@ const listaCompras1 = ref([
     nome: 'Chaveiro da Magali-Turma Da Mônica',
     preco: 7.90,
     quantidade: 0,
-    img: 'chaveiro da Magali.jpg',
+    img: 'chaveiroMagali.jpg',
   },
   {
     id: 4,
     nome: 'Chaveiro da Mônica-Turma da Mônica',
     preco: 7.90,
     quantidade: 0,
+    img: 'ChaveiroMonica.jpg',
   },
   {
     id: 5,
     nome: 'Chaveiro do Mingau-Turma da Mônica',
     preco: 7.90,
     quantidade: 0,
+    img:'ChavMingau.webp'
   },
   {
     id: 6,
     nome: 'Chaveiro do Tasco-Turma Da Mônica',
     preco: 7.90,
     quantidade: 0,
+    img: 'Chavtasco.jpg'
   },
   
    
@@ -73,6 +76,8 @@ function adicionar(index) {
 
   }
 
+  
+
 }
 </script>
 
@@ -102,6 +107,33 @@ function adicionar(index) {
   </div>
 
 
+  <div class="box">
+
+<div class="item" v-for="(item, index) in listaCompras1" :key="item.id">
+
+  <p>Item: {{  item.nome }}</p>
+  <p>Preco: {{ item.preco }}</p>
+  <p>ID: {{ item.id }}</p>
+  <p>quantidade: {{ item.quantidade }}</p>
+  
+    <img :src="item.img" >
+  
+
+  <div class="botao">
+
+    <button @click="decrementar(index)">-</button>
+    <button @click="incrementar(index)">+</button> <br>
+    <button @click="adicionar(index)">Adicionar</button>
+
+
+  </div>
+</div>
+
+</div>
+
+
+
+
   <div class="carrinho">
 
     <div class="item" v-for="item in carrinhos.items">
@@ -110,6 +142,8 @@ function adicionar(index) {
       <p>Preco: {{ item.preco.toFixed(2) }}</p>
       <p>ID: {{ item.id }}</p>
       <p>Quantidade: {{ item.quantidade }}</p>
+      <img :src="item.img" >
+
 
     </div>
     <p> Total:{{ carrinhos.total.toFixed(2) }}</p>
@@ -121,7 +155,6 @@ function adicionar(index) {
   border-style: double;
   display: grid;
   grid-template-columns: 400px 400px 400px;
-
 }
 
 .item {
@@ -131,7 +164,7 @@ function adicionar(index) {
   margin-left: 25px;
   align-items: center;
   margin-bottom: 50px;
-
+  
 }
 
 p {
@@ -152,4 +185,5 @@ img{
   margin-right: 75px;
   
 }
+
 </style>
